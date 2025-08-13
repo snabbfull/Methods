@@ -1,17 +1,15 @@
 export class Character {
     constructor(name, type, health, level, attack, defence) {
-        if (typeof name !== 'string') {
-            throw new Error('Имя должно быть строкой');
-        }
-        if (name.length < 2 || name.length > 10) {
-            throw new Error('Длина имени должна быть от 2 до 10 символов');
-        }
-
         const allowedTypes = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
 
-        if (typeof type !== 'string' || !allowedTypes.includes(type)) {
+        if (typeof name !== 'string' || name.length < 2 || name.length > 10) {
+            throw new Error('Имя должно быть строкой длиной от 2 до 10 символов');
+        }
+
+        if (!allowedTypes.includes(type)) {
             throw new Error(`Тип должен быть одним из: ${allowedTypes.join(', ')}`);
         }
+
         this.name = name;
         this.type = type;
         this.health = health;
@@ -43,25 +41,49 @@ export class Character {
 }
 
 export class Bowerman extends Character {
-
+    constructor(name) {
+        super(name, 'Bowman', 100, 1);
+        this.attack = 25;
+        this.defence = 25;
+    }
 }
 
 export class Swordsman extends Character {
-
+    constructor(name) {
+        super(name, 'Swordsman', 100, 1);
+        this.attack = 40;
+        this.defence = 10;
+    }
 }
 
 export class Magician extends Character {
-
+    constructor(name) {
+        super(name, 'Magician', 100, 1);
+        this.attack = 10;
+        this.defence = 40;
+    }
 }
 
 export class Daemon extends Character {
-
+    constructor(name) {
+        super(name, 'Daemon', 100, 1);
+        this.attack = 10;
+        this.defence = 40;
+    }
 }
 
 export class Undead extends Character {
-
+    constructor(name) {
+        super(name, 'Undead', 100, 1);
+        this.attack = 25;
+        this.defence = 25;
+    }
 }
 
 export class Zombie extends Character {
-
+    constructor(name) {
+        super(name, 'Zombie', 100, 1);
+        this.attack = 40;
+        this.defence = 10;
+    }
 }
